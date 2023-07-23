@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="select">
+            <label for="city">Select the City : </label>
+            <select name="city" id="city">
+                <option value="city">Select</option>
+                <option value="delhi">Delhi</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="patna">Patna</option>
+                <option value="cochin">Kochi</option>
+                <option value="chennai">Chennai</option>
+                <option value="bengaluru">Bengaluru</option>
+                <option value="lucknow">Lucknow</option>
+                <option value="srinagar">Srinagar</option>
+                <option value="gulmarg">Gulmarg</option>
+                <option value="leeds">Leeds</option>
+                <option value="london">London</option>
+                <option value="paris">Paris</option>
+                <option value="new york">New York</option>
+                <option value="tokyo">Tokyo</option>
+                <option value="dubai">Dubai</option>
+                <option value="barcelona">Barcelona</option>
+                <option value="rome">Rome</option>
+                <option value="madrid">Madrid</option>
+                <option value="sydney">Sydney</option>
+                <option value="los angeles">Los Angeles</option>
+                <option value="amsterdam">Amsterdam</option>
+                <option value="beijing">Beijing</option>
+                <option value="rio de janeiro">Rio de Janeiro</option>
+                <option value="edinburgh">Edinburgh</option>
+            </select>
+        </div>
+        <div class="card">
+            <h2><i class="fa fa-map-marker"></i><span id="location">City</span></h2>
+            <h6 id="weather"></h6>
+            <p><span id="temp"></span><sup>o</sup>C</p>
+            <img src="" alt="" id="icon">
+
+            <button onclick="window.location.reload()" class="refresh"><i class="fa fa-refresh"></i></button>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script>
+        var city = document.querySelector("#city");
+        city.addEventListener('change',
+            function () {
+                link = "https://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&appid=009fc8b60252c136cac698b4ba371350";
+                var request = new XMLHttpRequest();
+                request.open('GET', link, true);
+                request.onload = function () {
+                    var obj = JSON.parse(this.response);
+                    console.log(obj);
+                    document.querySelector("#weather").innerHTML = obj.weather[0].description;
+                    document.querySelector('#location').innerHTML = obj.name;
+                    document.querySelector('#temp').innerHTML = Math.round(obj.main.temp - 273.15);
+                    document.querySelector('#icon').src = "https://openweathermap.org/img/w/" + obj.weather[0].icon + ".png";
+                }
+                if (request.status >= 200 && request.status < 400) {
+                    var temp = obj.main.temp;
+                }
+                else {
+                    console.log("The city data is not available");
+                }
+                request.send();
+            })
+    </script>
+</body>
+
+</html>

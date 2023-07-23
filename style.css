@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    background-color: #343434;
+}
+
+.container {
+    width: 30%;
+}
+
+.select {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 20px;
+    color: #fff;
+}
+
+#city {
+    width: 120px;
+    height: 25px;
+    color: #fff;
+    background-color: #343434;
+    margin: 5px;
+    padding-left: 3%;
+    border-radius: 5px;
+}
+
+.card {
+    border-radius: 50px;
+    background-color: #343434;
+    box-shadow: 5px 5px 10px #191b1b, -5px -5px 10px #595959;
+    padding: 3%;
+    text-align: center;
+}
+
+.card p {
+    font-size: 4rem;
+    font-weight: 400;
+    margin: 1rem 0;
+}
+
+img #icon {
+    width: 20%;
+}
+
+h6 #weather {
+    text-transform: capitalize;
+}
+
+button.refresh {
+    cursor: pointer;
+    display: block;
+    width: 100px;
+    margin: 10px auto;
+    background: transparent;
+    border: 0;
+    color: #9c9c9d;
+    font-size: 30px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 10px 4px 10px #252525, 5px 5px 18px #4a4a4a;
+}
+
+button.refresh:hover {
+    box-shadow: inset 10px 4px 10px #252525, inset 5px 5px 18px #4a4a4a;
+}
+
+@media screen and (max-width: 1023px) {
+    .container {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .container {
+        width: 60%;
+    }
+
+    #city {
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 80%;
+    }
+}
